@@ -1,0 +1,15 @@
+a)C. Becase router 3c learns x in a different AS
+
+b)D. From iBGP because router 3a learns x in the same AS
+
+c)C. Same reason as a
+
+d)D. Same reason as b 
+
+e) l1 because RIP choses the least distant vector. From 1d to gateway 1c takes 2 hops from l1, but 3 hops from l2
+
+f)l2. If there is a link from AS4 to AS2, it measn there are two possible inter-routes. AS4 and AS3. So  we will use the hot potate rule. From ld to AS2 take 2 hopes, but 3 hops to AS2. Thus we will use l2 and choose the route AS2.
+
+g) hot-potato routing, means we always choose route with the closest next hope (so we can deliever the packets faster.)
+
+f) For example, if Facebook in europe requests a youtube video that on the server of American. American Youtube server could send the packets to the closet routes of FB in American as hot potato routing. But if the ratio of taffic flowing from American Youtube to European Facebook is not even, it  will not be fair.  

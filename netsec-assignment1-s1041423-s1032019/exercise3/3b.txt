@@ -1,0 +1,42 @@
+GET /ping HTTP/1.1
+Host: global.infoapis.net
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7
+Cookie: __cfduid=d43246d905eb619f9da812c219253d8031611786955
+
+HTTP/1.1 204 No content
+Date: Sat, 30 Jan 2021 20:45:20 GMT
+Content-Length: 0
+Connection: keep-alive
+Via: 1.1 google
+CF-Cache-Status: DYNAMIC
+cf-request-id: 07f6a417e20000bdafbaba7000000001
+Report-To: {"max_age":604800,"group":"cf-nel","endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=Z4Wnk0kN1kIfM5Is4XHtmzL20oDii7syc2cb94Vly%2BrCTLzdAi8VistWTLqHi7GZXwDMT6%2B%2BAGk%2FLsa57nkdkK3PTsL9MM2xD4G8654AcfTz3TJJ"}]}
+NEL: {"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 619e09396fa1bdaf-AMS
+
+GET /ping HTTP/1.1
+Host: global.infoapis.net
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7
+Cookie: __cfduid=d43246d905eb619f9da812c219253d8031611786955
+
+HTTP/1.1 204 No content
+Date: Sat, 30 Jan 2021 20:45:20 GMT
+Content-Length: 0
+Connection: keep-alive
+Via: 1.1 google
+CF-Cache-Status: DYNAMIC
+cf-request-id: 07f6a418e40000bdafc0b70000000001
+Report-To: {"max_age":604800,"group":"cf-nel","endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=WeZzh0MLsbAsqCGbdufoWqrlmr2xBNF2CPB0l6Vfqhs%2B0inJPWFaOGgR85Y6t6MSO9c5aFHGTDntUlfxNwELQsLVDycFu1BQpAcJJxa%2B6Qfz8cvy"}]}
+NEL: {"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 619e093b0899bdaf-AMS
+

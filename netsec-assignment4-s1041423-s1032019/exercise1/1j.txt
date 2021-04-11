@@ -1,0 +1,1 @@
+2^(128-32) / 365 approximately 2.17*10^26 years

@@ -1,0 +1,36 @@
+a. For both virtual machinese, we used
+fe80::1/64 and fe80::2/64 for the address of the eth1 interface.
+Since, the interdace identifier has to be different, it doesn't matter with what ivalues we use.
+
+b. sudo ip address add fe80::2/64 dev eth1  
+   sudo ip address add fe80::1/64 dev eth1    
+The above command is the command we used to set up the  ipv6 address for interface eth1
+
+c. ping fe80::1%eth1
+We used this command to ping the original vm with interface eth1
+
+
+d. since different interfaces have different ip addresses. For example, if we set the command in c) to interface eth0, it doesn't work anymore.
+
+e. It is advised to 7 bits for prefix and 41 bits for global id. We will follow this convention 
+
+prefix we chose to be fd:
+fd: 11111101 can have 7 bits, so prefix is 1111110
+global id :  some random digits
+l=1 because prefix is locally assigned 
+fd88:dc1:1ac:002a:: /64 looks good
+
+
+we set the serber address to be fd88:dc1:1ac:002a::1
+
+range: fd88:dc1:1ac:002a::2 - fd88:dc1:1ac:002a:10
+
+
+f)fd88:dc1:1ac:002a::9 on the clone eth1
+
+g) Yes they worked
+
+h)the ip address on the close has prefix length 128
+IT doesn't matter because the forwarding table has the correct prefix length.
+
+

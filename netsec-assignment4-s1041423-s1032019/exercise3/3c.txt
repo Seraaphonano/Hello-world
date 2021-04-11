@@ -1,0 +1,2 @@
+The router will replace the destination port with the client ip address and port number by looking up
+the translation table. 

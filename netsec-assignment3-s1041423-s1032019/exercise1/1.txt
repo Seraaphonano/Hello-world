@@ -1,0 +1,22 @@
+1)
+a.
+Source port from the port range defined by IANA (49152-65535)
+Destination port is 80
+
+b.
+Source port from the port range defined by IANA (49152-65535)
+Destination port is 80
+
+c.
+Source port is 80
+Destination port is equal to a's source port
+
+d. 
+Source port is 80
+Destination port is equal to b's source port
+
+f.
+Yes, if A and B are the same host than it may be the case that the source port in a and b are similar, if so, then the destination ports will also be equal to each other.
+
+g.
+DNS used UDP so 1 socket.

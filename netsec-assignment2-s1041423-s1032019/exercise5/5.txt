@@ -1,0 +1,26 @@
+
+5.a
+Because the parameter of the 16th bit of the header is set to 0 in the request,
+and to 1 in the response.
+
+5.b
+Because the ID's are equal in the headers of the request and response messages
+
+5.c 
+torproject.org
+
+5.d
+After the host name. We will have 00 to indicate it's done. Then we translate 000f to decimal we get 15 which is mx in type code. 
+MX, mail exchange.
+
+5.e
+after two labels from the type code, WE found this:
+0e10 should be the TTL which is 
+3600 seconds =  1 hr
+
+5.f
+We don't if that's correct. But we think the preference is 2.
+
+5.g
+
+eugeni@torproject.org

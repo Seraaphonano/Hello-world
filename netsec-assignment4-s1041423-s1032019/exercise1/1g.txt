@@ -1,0 +1,1 @@
+fc00::/7 are the unique-local addresses. This is equivalent to the priavte network mentioned in 1c) They are used for local area networks.

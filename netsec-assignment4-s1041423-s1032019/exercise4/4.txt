@@ -1,0 +1,8 @@
+4
+a.
+-The fields IHL, identification and flags are not present in a IPv6 header.
+-IPv4 has an IP Options field where as IPv6 uses extension headers.
+-TTL (Time-to-Live) in IPv4 is the same as Hop Limit in IPv6
+
+b.
+We agree with this statement because the entire IPv6 datagram is encapsulated in an IPv4 datagram whenever IPv6 tunnels through a IPv4 router.

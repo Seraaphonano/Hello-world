@@ -1,0 +1,32 @@
+4.a
+	2. Client queries root DNS server to find .org DNS server
+	3. Client queries .org DNS server to find .example.org DNS server
+	4. Client queries .example.org DNS server to find random.example.org DNS server
+
+4.b
+The most likely will be .org, as it is widely used for manny website addressses
+The least likely will be random.example.org, 
+as it is a very specific website address that probably is 
+only used by one website.
+
+4.c
+Use the DNS cache to find out if the website was recently accessed, 
+if it exists in the DNS cache, it was. Else, it was not.
+If the resolver doesn't have to send query question for a domain name, then we know it's cached.
+
+
+4.d
+Yes, if the TTL is big then it is frequently looked up as it should then not be removed from the cache.
+
+4.e
+FQDN: www.printer.random.example.org
+IPv4: 134.122.131.10
+
+4.f
+beta.random.example.org, 131.122.131.10
+
+4.g
+If one of the ip-addresses of an A record changes, the CNAME record pointing to that will also change.
+It also saves up the processes of looking up the ip address. 
+
+

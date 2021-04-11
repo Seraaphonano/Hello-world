@@ -1,0 +1,23 @@
+traceroute to soest.hawaii.edu (128.171.151.230), 30 hops max, 60 byte packets
+ 1  10.0.2.2 (10.0.2.2)  0.281 ms  0.240 ms  0.235 ms
+ 2  VRV9517 (192.168.2.254)  0.678 ms  0.855 ms  1.042 ms
+ 3  195-190-228-52.fixed.kpn.net (195.190.228.52)  12.912 ms  12.837 ms  10.334 ms
+ 4  * * *
+ 5  * * *
+ 6  100ge0-31.core2.lon3.he.net (184.104.193.193)  17.766 ms  17.266 ms  17.461 ms
+ 7  100ge14-1.core1.lon2.he.net (184.105.64.237)  24.696 ms  16.005 ms  16.301 ms
+ 8  100ge4-1.core1.nyc4.he.net (72.52.92.166)  82.568 ms  82.564 ms  82.622 ms
+ 9  100ge16-1.core1.ash1.he.net (184.105.223.165)  92.820 ms  92.863 ms  93.060 ms
+10  100ge2-1.core1.lax1.he.net (184.105.80.202)  142.395 ms  142.430 ms  141.916 ms
+11  100ge14-1.core1.lax2.he.net (72.52.92.122)  143.391 ms  154.834 ms  154.994 ms
+12  100ge0-36.core2.lax2.he.net (184.104.192.234)  144.113 ms  143.433 ms  143.499 ms
+13  100ge4-1.core1.hnl1.he.net (184.104.193.234)  188.816 ms  194.144 ms  197.156 ms
+14  university-of-hawaii.10gigabitethernet11-17.core1.hnl1.he.net (64.62.205.38)  187.052 ms  187.170 ms  187.166 ms
+15  xe-0-0-3-105-ohelo-re0.uhnet.net (166.122.213.27)  200.048 ms  199.943 ms  199.924 ms
+16  et-1-2-0-71-kolanut-re0.uhnet.net (205.166.205.43)  205.750 ms  205.747 ms  205.426 ms
+17  vl-669-manoa6506-2.uhnet.net (128.171.213.6)  205.157 ms  205.448 ms  205.479 ms
+18  vl-3247-postl3hub.uhnet.net (128.171.186.239)  201.983 ms  201.564 ms  201.546 ms
+19  soestgw.soest.hawaii.edu (128.171.124.9)  205.609 ms  206.309 ms  204.942 ms
+20  tengpost.soest.hawaii.edu (128.171.150.1)  206.607 ms  206.719 ms  207.704 ms
+21  dns.soest.hawaii.edu (128.171.151.230)  206.669 ms  206.885 ms  206.986 ms
+

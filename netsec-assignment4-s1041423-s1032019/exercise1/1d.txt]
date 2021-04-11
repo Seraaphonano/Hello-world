@@ -1,0 +1,3 @@
+IPv4 broadcast address is the last address of the range of an CIDR
+
+172.21.152.0/23 has the broadcast address:  172.21.153.255

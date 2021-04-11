@@ -1,0 +1,7 @@
+Subnets 1 needs 60 => 64 bits, thus we need at least 6 bits
+Subnets 2 needs 90 => 128 bits, thus we need at least 7 bits
+Subnets 3 needs 12 => 16 bits, thus we need at least 4 bits
+To deal with addresses overlapping, we have to check the last bloack of the addresses.
+Subnet1:223.1.17.0/26
+subnet2:223.1.17.128/25
+subnet3:223.1.17.64/28

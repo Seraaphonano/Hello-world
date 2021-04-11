@@ -1,0 +1,2 @@
+The first one cann't be routed while the second can.
+The first one is automatically assigned, and the other is done manually.  

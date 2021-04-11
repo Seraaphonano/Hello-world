@@ -1,0 +1,3 @@
+127.0.0.0/8 is the address bloack reserved for loopback in IPv4. Any packet sent to this addresses will be looped back. 
+
+127.0.0.1 leads to the localhost network. 

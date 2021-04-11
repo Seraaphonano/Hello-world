@@ -1,0 +1,35 @@
+a.
+
+
+For Subnet 1 : 192.168.1.001 A
+	       192.168.1.002 B
+	       192.168.1.003 Left router 1
+
+
+     Subnet 2 : 192.168.2.001  C
+     		192.168.2.002  D
+     		192.168.2.003 right router 1
+     		192.168.2.004 left router 2
+     
+     Subnet 3 : 192.168.3.001 E
+		192.168.3.002 F
+		192.168.3.003 right router 2
+		
+
+b.
+1. E knows the forwarding table. E should know it needs to send the packet (192.168.3.003 ). Then the netword adapter
+of E creates a packet with the mac address of router 2. 
+
+
+2. E send it to router 2. Looks at the packet and knows it should sent the packet to the ip address
+of the right side of router 1 (192.168.2.003 ) by looking up the forwarding table.
+
+3. Router 1 looks at the packet and send it to B via mac address B_mac .
+
+
+
+c. The APR in E has to look for the mac address of right side of router 2(192.168.3.003)
+Host E will send an ARP query within the broadcast Ethernet frame. Router 2 will
+receive the questions and send the answer back to Host E. 
+
+Then the same prcoess in 2) will be carried out. 

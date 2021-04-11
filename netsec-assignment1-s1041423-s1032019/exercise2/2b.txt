@@ -1,0 +1,67 @@
+ping: (ping duckduckgo.com)
+1)it outputs the times it takes for the input ip address to respond our request. Or simply outputs it can't find the address or unreachable.
+2)62	46.814709806	10.0.2.15	52.142.124.215	ICMP	98	Echo (ping) request  id=0xf2b2, seq=1/256, ttl=64 (no response found!)
+93	93.513634604	52.142.124.215	10.0.2.15	ICMP	98	Echo (ping) reply    id=0x717d, seq=3/768, ttl=59 (request in 92)
+3) In wireshark, we use the ip address of duckduckgo(52.142.124.215) to filter the packets. We find that ping sends a Echo request from our ip address (the ethernet cable). Thenthe website responds the echo command. Thus we know our network/device can reach the input ip address. 
+
+
+traceroute: (traceroute --icmp howtogeek.com)
+1) it outputs a bunch of ip addresses and some time spans
+2) 35	0.049086266	10.0.2.15	151.101.2.217	ICMP	74	Echo (ping) request  id=0x21c4, seq=19/4864, ttl=7 (reply in 44)
+38	0.057110581	195.190.228.52	10.0.2.15	ICMP	70	Time-to-live exceeded (Time to live exceeded in transit)
+42	0.059550639	151.101.2.217	10.0.2.15	ICMP	74	Echo (ping) reply    id=0x21c4, seq=17/4352, ttl=59 (request in 33)
+3)Our ip address sends an echo to the input ip address. It uses time-to-live to diagnoze the intermediate ip address that our request has to go through to reach the destination address and come back. If the time-to-live exceeded, in the next round, time-to-live will have a higher value. 
+
+
+whois: (whois 131.174.78.16)
+1) tell us everything about the input ip address. The organization names, telephone number, region, everything. 
+2)
+No.	Time	Source	Destination	Protocol	Length	Info
+1	0.000000000	10.0.2.15	192.168.2.254	DNS	74	Standard query 0x0ba2 A whois.arin.net
+2	0.000023103	10.0.2.15	192.168.2.254	DNS	74	Standard query 0x99a4 AAAA whois.arin.net
+3	0.019338653	192.168.2.254	10.0.2.15	DNS	158	Standard query response 0x99a4 AAAA whois.arin.net AAAA 2001:500:13::46 AAAA 2001:500:31::46 AAAA 2001:500:a9::46
+4	5.003311449	10.0.2.15	192.168.2.254	DNS	74	Standard query 0x0ba2 A whois.arin.net
+5	5.024702993	192.168.2.254	10.0.2.15	DNS	122	Standard query response 0x0ba2 A whois.arin.net A 199.71.0.46 A 199.212.0.46 A 199.5.26.46
+6	5.024757136	10.0.2.15	192.168.2.254	DNS	74	Standard query 0x99a4 AAAA whois.arin.net
+7	5.198225688	192.168.2.254	10.0.2.15	DNS	158	Standard query response 0x99a4 AAAA whois.arin.net AAAA 2001:500:31::46 AAAA 2001:500:a9::46 AAAA 2001:500:13::46
+8	5.198460741	10.0.2.15	199.71.0.46	TCP	74	35182 → 43 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM=1 TSval=1948732442 TSecr=0 WS=128
+9	5.350534672	199.71.0.46	10.0.2.15	TCP	60	43 → 35182 [SYN, ACK] Seq=0 Ack=1 Win=65535 Len=0 MSS=1460
+10	5.350573926	10.0.2.15	199.71.0.46	TCP	54	35182 → 43 [ACK] Seq=1 Ack=1 Win=64240 Len=0
+11	5.350638228	10.0.2.15	199.71.0.46	WHOIS	73	Query: n + 131.174.78.16
+12	5.350736551	199.71.0.46	10.0.2.15	TCP	60	43 → 35182 [ACK] Seq=1 Ack=20 Win=65535 Len=0
+13	5.502611541	199.71.0.46	10.0.2.15	TCP	392	43 → 35182 [PSH, ACK] Seq=1 Ack=20 Win=65535 Len=338 [TCP segment of a reassembled PDU]
+14	5.502633182	10.0.2.15	199.71.0.46	TCP	54	35182 → 43 [ACK] Seq=20 Ack=339 Win=63902 Len=0
+15	5.508410170	199.71.0.46	10.0.2.15	TCP	1514	43 → 35182 [PSH, ACK] Seq=339 Ack=20 Win=65535 Len=1460 [TCP segment of a reassembled PDU]
+16	5.508431811	10.0.2.15	199.71.0.46	TCP	54	35182 → 43 [ACK] Seq=20 Ack=1799 Win=63902 Len=0
+17	5.508701337	199.71.0.46	10.0.2.15	TCP	475	43 → 35182 [PSH, ACK] Seq=1799 Ack=20 Win=65535 Len=421 [TCP segment of a reassembled PDU]
+18	5.508706436	10.0.2.15	199.71.0.46	TCP	54	35182 → 43 [ACK] Seq=20 Ack=2220 Win=63902 Len=0
+19	5.508701377	199.71.0.46	10.0.2.15	WHOIS	60	Answer: n + 131.174.78.16
+20	5.508760008	10.0.2.15	199.71.0.46	TCP	54	35182 → 43 [FIN, ACK] Seq=20 Ack=2221 Win=63902 Len=0
+21	5.508839606	199.71.0.46	10.0.2.15	TCP	60	43 → 35182 [ACK] Seq=2221 Ack=21 Win=65535 Len=0
+22	5.508975533	10.0.2.15	192.168.2.254	DNS	74	Standard query 0xd8c6 A whois.ripe.net
+23	5.528925041	192.168.2.254	10.0.2.15	DNS	90	Standard query response 0xd8c6 A whois.ripe.net A 193.0.6.135
+24	5.528980555	10.0.2.15	192.168.2.254	DNS	74	Standard query 0x46c0 AAAA whois.ripe.net
+25	5.548975991	192.168.2.254	10.0.2.15	DNS	102	Standard query response 0x46c0 AAAA whois.ripe.net AAAA 2001:67c:2e8:22::c100:687
+26	5.549097200	10.0.2.15	193.0.6.135	TCP	74	41092 → 43 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM=1 TSval=1310668808 TSecr=0 WS=128
+27	5.562702585	193.0.6.135	10.0.2.15	TCP	60	43 → 41092 [SYN, ACK] Seq=0 Ack=1 Win=65535 Len=0 MSS=1460
+28	5.562722181	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [ACK] Seq=1 Ack=1 Win=64240 Len=0
+29	5.562780771	10.0.2.15	193.0.6.135	WHOIS	80	Query: -V Md5.5.7 131.174.78.16
+30	5.562870580	193.0.6.135	10.0.2.15	TCP	60	43 → 41092 [ACK] Seq=1 Ack=27 Win=65535 Len=0
+31	5.576098849	193.0.6.135	10.0.2.15	TCP	251	43 → 41092 [PSH, ACK] Seq=1 Ack=27 Win=65535 Len=197 [TCP segment of a reassembled PDU]
+32	5.576106012	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [ACK] Seq=27 Ack=198 Win=64043 Len=0
+33	5.578665735	193.0.6.135	10.0.2.15	TCP	162	43 → 41092 [PSH, ACK] Seq=198 Ack=27 Win=65535 Len=108 [TCP segment of a reassembled PDU]
+34	5.578669822	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [ACK] Seq=27 Ack=306 Win=64043 Len=0
+35	5.583079406	193.0.6.135	10.0.2.15	TCP	112	43 → 41092 [PSH, ACK] Seq=306 Ack=27 Win=65535 Len=58 [TCP segment of a reassembled PDU]
+36	5.583085637	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [ACK] Seq=27 Ack=364 Win=64043 Len=0
+37	5.585800762	193.0.6.135	10.0.2.15	TCP	123	43 → 41092 [PSH, ACK] Seq=364 Ack=27 Win=65535 Len=69 [TCP segment of a reassembled PDU]
+38	5.585805571	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [ACK] Seq=27 Ack=433 Win=64043 Len=0
+39	5.585994435	193.0.6.135	10.0.2.15	TCP	512	43 → 41092 [PSH, ACK] Seq=433 Ack=27 Win=65535 Len=458 [TCP segment of a reassembled PDU]
+40	5.585998583	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [ACK] Seq=27 Ack=891 Win=64043 Len=0
+41	5.586206162	193.0.6.135	10.0.2.15	TCP	1204	43 → 41092 [PSH, ACK] Seq=891 Ack=27 Win=65535 Len=1150 [TCP segment of a reassembled PDU]
+42	5.586210631	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [ACK] Seq=27 Ack=2041 Win=64043 Len=0
+43	5.588621564	193.0.6.135	10.0.2.15	TCP	136	43 → 41092 [PSH, ACK] Seq=2041 Ack=27 Win=65535 Len=82 [TCP segment of a reassembled PDU]
+44	5.588626022	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [ACK] Seq=27 Ack=2123 Win=64043 Len=0
+45	5.588621614	193.0.6.135	10.0.2.15	WHOIS	60	Answer: -V Md5.5.7 131.174.78.16
+46	5.588674996	10.0.2.15	193.0.6.135	TCP	54	41092 → 43 [FIN, ACK] Seq=27 Ack=2124 Win=64043 Len=0
+47	5.588780673	193.0.6.135	10.0.2.15	TCP	60	43 → 41092 [ACK] Seq=2124 Ack=28 Win=65535 Len=0
+3)Those are some infomation exchanges our ip addr make with the whois searching website for example https://www.arin.net/resources/registry/whois/tou/. Then we get the information about the input ip address

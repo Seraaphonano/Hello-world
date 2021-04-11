@@ -1,0 +1,61 @@
+This commandline reachess the root server for the input hostnames's addresss.
+Each server will return if they know the ip addr for the hostname or not. If not the server will refer to another server that might know the ip address. Then the resolver will 
+look up the hostname with the referal address. Until a ip address is return. This simulates how the hostname was resolved in the real life. In our case, the commands asks for the
+root servers, and refered to nl dsn server,  then to serfnet server and then to the science.ru.nl server. And finally gor the ip address of ygritte.cs.ru.nl. 
+
+
+
+
+
+$ dig ygritte.cs.ru.nl +trace
+
+; <<>> DiG 9.16.8-Debian <<>> ygritte.cs.ru.nl +trace
+;; global options: +cmd
+.                       83488   IN      NS      l.root-servers.net.
+.                       83488   IN      NS      d.root-servers.net.
+.                       83488   IN      NS      k.root-servers.net.
+.                       83488   IN      NS      c.root-servers.net.
+.                       83488   IN      NS      a.root-servers.net.
+.                       83488   IN      NS      m.root-servers.net.
+.                       83488   IN      NS      f.root-servers.net.
+.                       83488   IN      NS      j.root-servers.net.
+.                       83488   IN      NS      h.root-servers.net.
+.                       83488   IN      NS      g.root-servers.net.
+.                       83488   IN      NS      i.root-servers.net.
+.                       83488   IN      NS      b.root-servers.net.
+.                       83488   IN      NS      e.root-servers.net.
+.                       83488   IN      RRSIG   NS 8 0 518400 20210222170000 20210209160000 42351 . RbrjzAn3xIHbbrwgfJRGWeuQ03eWElV44EMo2tAVdPv2qhkI0S3H+RzY xaiyj7s759B43y+Fgmi20VFJYkhnO1Gzq8RPKZoAbRgWFv1wxZ4K/pTk 42IGvPKnZHCdjpL/eey1n+jpu4gxMc85T+qHNUSk0Kxc8q+LsVtEqXT9 zcFRYYaUIbemRMshPUWqmOQe2OXzpwLY2EqulIttS2zC5IgUruTszag2 uE7Tknymx4h3f0Gt3HPn1FlsqjjJTzv0D++YaPITBotqOgMa57ctWATz NUL6vJtI9y7iDtIFxsLjn6cTUBhqnpo2pKNtz/HG2zofBf49E512tYfN EUPPIA==
+;; Received 525 bytes from 192.168.2.254#53(192.168.2.254) in 20 ms
+
+nl.                     172800  IN      NS      ns3.dns.nl.
+nl.                     172800  IN      NS      ns1.dns.nl.
+nl.                     172800  IN      NS      ns2.dns.nl.
+nl.                     86400   IN      DS      34112 8 2 3C5B5F9B3557455C50751A9BE9EBE9238C88E19F5F07F930976917B5 1B95CD22
+nl.                     86400   IN      RRSIG   DS 8 1 86400 20210222170000 20210209160000 42351 . YyBWCUKlYK4bKAvvLQs0xDY+UEAA7grEEerDuKiT9e1/eFOUm3wIRuMN vH28E0C11ADZMzutlgomFKMFWf0eoKin6fyLRbwnuY+5uw6gR0SsUMVa 7HlVvKkYxN3k8HmaJlGELB6b2YESR1Ljg6bd2UtMBxZW5C+SSz03b20X iOnC3/FOU6nJgJnkoWm8Bc80lf1eA8QFRdQinKF7MClpSsuy5CAj9ZdN APBmoWfYpgDCGyGZ3/o25pCO+9kRwgX6oo77FvvNpWqBDO+vR9eFBrAb p1nuttnEZRJ2QWPh0XjgYyYyQ6T3IuxISI+XRJGe5CiNU7rUsvSAw1Lv npfz7g==
+;; Received 598 bytes from 192.5.5.241#53(f.root-servers.net) in 0 ms
+
+ru.nl.                  3600    IN      NS      ns1.surfnet.nl.
+ru.nl.                  3600    IN      NS      ns3.ru.nl.
+ru.nl.                  3600    IN      NS      ns4.ru.nl.
+ru.nl.                  3600    IN      DS      38305 8 2 C733A06D782B1CEB40FA716E759ECFBCAB2FDE1A2E542022154D2E72 4BAA4BD7
+ru.nl.                  3600    IN      DS      56377 8 2 1B11239D53BAF46E91600F808EE038527A849EE15C4EFB3464BDCAC0 E392DF72
+ru.nl.                  3600    IN      RRSIG   DS 8 2 3600 20210220053254 20210206041113 4309 nl. Us+Wbs5CCQsLIQoLVagDS+kACuafoorJPfYjqzP/yB/4HKPfKxIXIdrs dWTFzNtUPwvPOBC2J4FEJGQapnjQGzQfTOEyfXjJ/e3IS8BibE8T0ysb 6u/SMySTVQvu0cvM9K0fjTxrAFbl0vzYQ5RLvzVKpX3KysE5R9JZs+g7 4eE=
+;; Received 476 bytes from 194.146.106.42#53(ns2.dns.nl) in 16 ms
+
+cs.ru.nl.               86400   IN      NS      ns3.science.ru.nl.
+cs.ru.nl.               86400   IN      NS      ns2.science.ru.nl.
+cs.ru.nl.               86400   IN      NS      ns1.science.ru.nl.
+cs.ru.nl.               86400   IN      DS      18967 8 2 BA7C8E0572AB1712F492CD490F5783435DDBC44F7D3B39AAD670F210 D2F80C50
+cs.ru.nl.               86400   IN      DS      6337 8 2 DEAEDC6E22EE8C632CE620E9AFACE27DFCCEEDA35E47752297B51489 A3FD4C82
+cs.ru.nl.               86400   IN      RRSIG   DS 8 3 86400 20210213042941 20210209033359 138 ru.nl. R+0tGmci8YIdHZp0XptszHUf4Oi7Jm4dD1ANihJPVMScFRp97Ra66Kfr gotdMGR+6vRRkzS+syWQQHhQixO88F0QreKsjFTS8ABnW033hxM6BLfO Ixza1LDSMnEBAb7Z87DlG2sd37BhR7nL5IcDkGdLLWqQdLXLy/D53s7y W7k=
+;; Received 416 bytes from 131.174.78.16#53(ns3.ru.nl) in 12 ms
+
+ygritte.cs.ru.nl.       86400   IN      A       131.174.31.164
+ygritte.cs.ru.nl.       86400   IN      RRSIG   A 8 4 86400 20210225190643 20210128185208 11418 cs.ru.nl. cswmOjWOrDuBhSRI8hUQkTcxp5uqQdyoi0IvrUuY0qbNtEtocC05jbRg k4EX/rAQNr2ckjvIlRdqA6yR6NoznprezScnew7+lu2X/3XwoQvI2JJw mHnwYlj9nrqCDkn8QzR1G6NoQB162Z39iO0FEcZtQea7pINt9YAD9ME+ IW8=
+cs.ru.nl.               86400   IN      NS      ns1.science.ru.nl.
+cs.ru.nl.               86400   IN      NS      ns2.science.ru.nl.
+cs.ru.nl.               86400   IN      NS      ns3.science.ru.nl.
+cs.ru.nl.               86400   IN      RRSIG   NS 8 3 86400 20210225222045 20210128214403 11418 cs.ru.nl. fFHaZrPb63CwIm0zxKPYK9x246e0F/K9CNxqL0zZN4jJhW7Ts6YCp2iU LgO72sO+zKqDNJksUD8wTkVsWAIQFWcr7DCTvrilPxGZGoriGbwP3exC 2epFdWRWG6+YC6URBFcGBVLznixnwtUBhAKcxQogDowdWRK9PPPW72u7 vVM=
+;; Received 1026 bytes from 131.174.16.133#53(ns2.science.ru.nl) in 16 ms
+
+

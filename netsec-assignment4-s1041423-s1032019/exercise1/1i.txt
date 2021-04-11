@@ -1,0 +1,1 @@
+In IPv6, we can achieve broadcast by sending one packet to the link-local hosts via multicast group.

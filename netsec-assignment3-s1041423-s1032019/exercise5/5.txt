@@ -1,0 +1,63 @@
+a) 
+0x3713    0xFFC0    0x2AEE
+
+
+b)
+0x1337   0xC0FF    0xEE2A  
+
+
+c) It uses Big endians, since in the transport layer, UDP doesn't change the order of bytes and it sends data to
+the network layer. In the network layer, it uses Big endains. 
+
+d)
+0001 0011 0011 0111
+1100 0000 1111 1111
+____________________+
+1101 0100 0011 0110
+
+1110 1110 0010 1010
+---------------------+
+1100 0010 0110 0000
+                  1
+____________________ +
+1100 0010 0110 0001
+
+0011 1101 1001 1110
+
+e)
+
+0x2D9E so we changed the checksum into hexadecimal form.
+we get this
+0010 1101 1001 1110
+and we add this 16-bits to the sum of d)
+the result is   
+
+ 0011 1101 1001 1110
+ 0010 1101 1001 1110
+ ___________________+
+ 0110 1011 0011 0000 
+ They are not all onces. Which means this segment is corrupted and will be rejected. 
+f)
+Yes. Since if one bit is changed, the the value of that number is changed, thus the sum and the check sum will also change. 
+
+g)
+N0. Let's see the counter example
+
+0000 0000 0000  1001
+0000 0000 0000  1000
+
+if the right most digit of both numbers is flipped Then answers will exactly the same for sum and checksum. 
+
+h)
+Since a checksum of 0x0000 is coverted to the one with all ones. Due the the feature of one's compliment.
+
+0000 0000 0000 0000 + 1111 1111 1111 1111 = 1111 1111 1111 1111
+1111 1111 1111 1111  + 1111 1111 1111 1111 = 1111 1111 1111 1111
+All results are accepted.
+
+i)because we only want to check the integrity of the segment. the sum of bits will have the same result 
+if we are consistent with the byte orders.
+
+
+  
+

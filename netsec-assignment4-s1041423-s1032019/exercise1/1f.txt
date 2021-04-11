@@ -1,0 +1,3 @@
+They are link-local address. One is for IPv4 and the latter is for IPv6. This is network
+address that is automatically assigned to with the stateless address autoconfiguration. It is often
+used in IPv4 when no external stateful mechanism of address configuration exists or another primary configuration fails. 

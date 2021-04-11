@@ -1,0 +1,7 @@
+9 subnets
+ 
+ for each 2 interfaces of a router, it will connect to two other routers. Then there are 3 subnets. 
+ 
+ For the other 2 intercases of a router, it can create another two subnets with link layer network.
+ 
+ 3 + 2*3 =9 subnets

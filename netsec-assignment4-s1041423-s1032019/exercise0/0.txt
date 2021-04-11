@@ -1,0 +1,3 @@
+unicast: one to one communication, traffic from one device to another
+multicast: one to many comminciation
+broadcast: one to all comminication (of that network). It's only for ipv4

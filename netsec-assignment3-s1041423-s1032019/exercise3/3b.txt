@@ -1,0 +1,1 @@
+b. TCP, as TCP does not use a timeout but immediately resends the package.

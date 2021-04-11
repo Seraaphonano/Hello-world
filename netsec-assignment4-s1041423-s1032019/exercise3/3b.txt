@@ -1,0 +1,2 @@
+the router will replace the outgoing address and port with its own ip address and a new port number. 
+The replaced address and port number will be stored in the translation table by the new port number. 

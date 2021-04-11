@@ -1,0 +1,97 @@
+We did three iterative queries and found the ip addrs 130.89.149.254
+
+
+
+
+dig @a.root-servers.net snt.utwente.nl
+
+; <<>> DiG 9.16.8-Debian <<>> @a.root-servers.net snt.utwente.nl
+; (2 servers found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 13425
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 3, ADDITIONAL: 7
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1472
+;; QUESTION SECTION:
+;snt.utwente.nl.                        IN      A
+
+;; AUTHORITY SECTION:
+nl.                     172800  IN      NS      ns1.dns.nl.
+nl.                     172800  IN      NS      ns2.dns.nl.
+nl.                     172800  IN      NS      ns3.dns.nl.
+
+;; ADDITIONAL SECTION:
+ns1.dns.nl.             172800  IN      A       194.0.28.53
+ns2.dns.nl.             172800  IN      A       194.146.106.42
+ns3.dns.nl.             172800  IN      A       194.0.25.24
+ns1.dns.nl.             172800  IN      AAAA    2001:678:2c:0:194:0:28:53
+ns2.dns.nl.             172800  IN      AAAA    2001:67c:1010:10::53
+ns3.dns.nl.             172800  IN      AAAA    2001:678:20::24
+
+;; Query time: 8 msec
+;; SERVER: 198.41.0.4#53(198.41.0.4)
+;; WHEN: Tue Feb 09 21:27:33 CET 2021
+;; MSG SIZE  rcvd: 233
+
+
+dig @ns1.dns.nl. snt.utwente.nl
+
+; <<>> DiG 9.16.8-Debian <<>> @ns1.dns.nl. snt.utwente.nl
+; (2 servers found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 4547
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 3, ADDITIONAL: 6
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;snt.utwente.nl.                        IN      A
+
+;; AUTHORITY SECTION:
+utwente.nl.             3600    IN      NS      ns1.utwente.nl.
+utwente.nl.             3600    IN      NS      ns2.utwente.nl.
+utwente.nl.             3600    IN      NS      ns3.utwente.nl.
+
+;; ADDITIONAL SECTION:
+ns1.utwente.nl.         3600    IN      A       130.89.1.2
+ns1.utwente.nl.         3600    IN      AAAA    2001:67c:2564:a102::3:1
+ns2.utwente.nl.         3600    IN      A       130.89.1.3
+ns2.utwente.nl.         3600    IN      AAAA    2001:67c:2564:a102::3:2
+ns3.utwente.nl.         3600    IN      A       131.155.0.37
+
+;; Query time: 16 msec
+;; SERVER: 194.0.28.53#53(194.0.28.53)
+;; WHEN: Tue Feb 09 21:30:02 CET 2021
+;; MSG SIZE  rcvd: 20
+
+
+dig @ns1.utwente.nl snt.utwente.nl
+
+; <<>> DiG 9.16.8-Debian <<>> @ns1.utwente.nl snt.utwente.nl
+; (2 servers found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 27378
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 81e908d3e0b4aeb870f7862b6022f1209a90bb8e72152dc2 (good)
+;; QUESTION SECTION:
+;snt.utwente.nl.                        IN      A
+
+;; ANSWER SECTION:
+snt.utwente.nl.         3600    IN      A       130.89.149.254
+
+;; Query time: 12 msec
+;; SERVER: 130.89.1.2#53(130.89.1.2)
+;; WHEN: Tue Feb 09 21:31:27 CET 2021
+;; MSG SIZE  rcvd: 87
+
+

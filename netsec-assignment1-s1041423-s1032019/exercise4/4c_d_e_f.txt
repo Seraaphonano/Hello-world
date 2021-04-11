@@ -1,0 +1,12 @@
+4c.
+There are no difference in terms of the ip addresses. However for "mtr", it outputs more informations about the packets. For example, if there is any loss and other attributes.
+
+
+4.d
+21 hops
+
+4.e
+The best latency would be with minimal packets traffic. This will be the best way to measure the physcial that one packet needs to travel from A to B. 
+
+4.f
+The hop from 3 to 6 from the output shown in 4a and 4b. 

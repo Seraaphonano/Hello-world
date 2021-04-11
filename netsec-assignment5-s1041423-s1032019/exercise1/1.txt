@@ -1,0 +1,18 @@
+1)
+a.
+The first route in the first table equals the first route in the second table. (second route in first table consequently equals the second route in second table)
+We can see that in the first table genmask, flags, ref and use are shown which are not shown in the second table.
+We can also see that in the second table protocol and src are shown which are not shown in the first table.
+
+b.
+All packets starting with a 0-bit will go through route 2 and all packets starting with a 1-bit will go through route 3.
+No packets will go through default, since all those packets will be handled by either route 2 or 3 (depending on the first bit).
+
+c.
+Route 4, since it's destination is 10.50.9.0/24 which includes 10.50.9.1
+
+d.
+Route 6 is an exception upon all above routes which route all packets through eth0. 
+Such a exception might be necessary when there is for instance a VPN connection and 172.16.20.23 is the address of the VPN.
+
+

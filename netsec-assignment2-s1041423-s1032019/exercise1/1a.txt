@@ -1,0 +1,15 @@
+From ATM to bank's server
+1. PASSWD: ATM reads a card, and get pincode as input. iT sends the (hashed) pincode to the server 
+if the server receives True value, it goes to the main page of the bank account. Otherwise output wrong password, if count=3, it will shows the account is blocked.
+2. SELECT balance from users with userid = *****: If the password is true, the ATM allows the user to check balance. Then it will send a query for balance to the server
+3. withdrawal= N: the atm sends a withdrawal request to the server. If it receives true, it will dispense cash to the client. If it recieces error message, it will output the error message on the screen.
+4. We think the termination of a session takes place local. As if the person click finish, the card is being returned. 
+
+
+
+From bank's server to ATM
+1. PASS_CHECK== true: The server sends a reponde and tells if the passward matches the one in the database 
+or 
+PASS_CHECK == false, count+1: If the password is not corret, it sends false value along the number of the times wrong tries.  
+2. BALANCE_RESULT: the server will look up the query and send it back to the ATM
+3. Error or True   :The sevrver checks if the withdrawal>balance. If it is the case, it will pass the wrong message to the atm machine. Otherwise it will return true to the atm. 

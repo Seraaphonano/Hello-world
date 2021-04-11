@@ -1,0 +1,12 @@
+1.TCP flow between Host A and Host b
+B will send the Receive windows size to Host A along with an acknowledge message. So A know when to stop after sending out the a bunch of segements. When Host B sends to A that it has receive windwos size of 0, A wil stop, but in practice, A will continuously send  small segments to b to see if the receive window of B is relieved again.
+
+
+
+The average speed: 50 mbps.  thats when the receive window is full, and then the host read 50 mbps from the receiver buffer and send this acknowledgement to A. A will in return send 50 mbps to the link, and link send 50mpbs to Host b.
+
+The minimum speed is 0 Mbps when the receive window is full on the receiver side. Host A only waits and send 
+nothing.
+
+The maximum speed is 100 mbps until the buffer is full since that's the maximum speed allowed by the link, then afterwards 50 Mbps as shown in the average speed. 
+
