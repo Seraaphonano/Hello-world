@@ -17,11 +17,11 @@ class BTCPStates(Enum):
     ACCEPTING = 1
     SYN_SENT  = 2
     SYN_RCVD  = 3
-    _         = 4 # There's an obvious state that goes here. Give it a name.
+    ACK_SENT  = 4 # There's an obvious state that goes here. Give it a name.
     FIN_SENT  = 5
     CLOSING   = 6
     __        = 7 # If you need more states, extend the Enum like this.
-    raise NotImplementedError("Check btcp_socket.py's BTCPStates enum. We left out some states you will need.")
+    #raise NotImplementedError("Check btcp_socket.py's BTCPStates enum. We left out some states you will need.")
 
 
 class BTCPSocket:
@@ -44,8 +44,29 @@ class BTCPSocket:
         segment, the checksum field in the header should be set to 0x0000, and
         then the resulting checksum should be put in its place.
         """
-        pass # present to be able to remove the NotImplementedError without having to implement anything yet.
-        raise NotImplementedError("No implementation of in_cksum present. Read the comments & code of btcp_socket.py.")
+        """
+        The Checksum function is borrowed from assignemt6 sniffer_start.py
+        """
+        # Signal nonsensical request (checksum of nothing?) with 0x0000
+        if not segment:
+            return 0x0000
+
+        # Pad to an even number of bytes
+        # buffer += len(buffer) % 2 * b'\x00' #not need because we only have even number of bytes in our segment
+
+        # Sum the entire run as 16-bit integers in network byte order.
+        acc = sum(x for (x,) in struct.iter_unpack(R'!H', segment))
+
+        # (Repeatedly) carry the overflow around until it fits in 16 bits.
+        while acc > 0xFFFF:
+            carry = acc >> 16
+            acc &= 0xFFFF
+            acc += carry
+
+        # Return the binary inverse except when the result is 0xFFFF
+        return acc if acc == 0xFFFF else (~acc & 0xFFFF)
+        #pass # present to be able to remove the NotImplementedError without having to implement anything yet.
+        #raise NotImplementedError("No implementation of in_cksum present. Read the comments & code of btcp_socket.py.")
 
 
     @staticmethod
@@ -85,5 +106,12 @@ class BTCPSocket:
         tupling, so it's easy to simply return all of them in one go rather
         than make a separate method for every individual field.
         """
-        pass
-        raise NotImplementedError("No implementation of unpack_segment_header present. Read the comments & code of btcp_socket.py. You should really implement the packing / unpacking of the header into field values before doing anything else!")
+        seqnum, acknum, flag_byte, window, length, checksum = struct.unpack_from("!HHBBHH",header)
+
+        syn_set = bool(flag_byte >> 2) #get the third bit from right
+        ack_set = bool((flag_byte & 0x2) >>1) # get the second bit from right
+        fin_set = bool(flag_byte & 0x1) # get the first bit from right
+
+        return seqnum, acknum, syn_set, ack_set, fin_set, window, length, checksum
+        # pass
+        # raise NotImplementedError("No implementation of unpack_segment_header present. Read the comments & code of btcp_socket.py. You should really implement the packing / unpacking of the header into field values before doing anything else!")

@@ -28,6 +28,8 @@ class BTCPClientSocket(BTCPSocket):
     """
 
 
+
+
     def __init__(self, window, timeout):
         """Constructor for the bTCP client socket. Allocates local resources
         and starts an instance of the Lossy Layer.
@@ -37,6 +39,8 @@ class BTCPClientSocket(BTCPSocket):
         """
         super().__init__(window, timeout)
         self._lossy_layer = LossyLayer(self, CLIENT_IP, CLIENT_PORT, SERVER_IP, SERVER_PORT)
+        self._seqnum
+        self._acknum #syn_set, ack_set, fin_set #, window, length
 
 
     ###########################################################################
@@ -65,8 +69,20 @@ class BTCPClientSocket(BTCPSocket):
 
         Remember, we expect you to implement this *as a state machine!*
         """
-        pass # present to be able to remove the NotImplementedError without having to implement anything yet.
-        raise NotImplementedError("No implementation of lossy_layer_segment_received present. Read the comments & code of client_socket.py.")
+        header_length =10
+        header = segment[header_length]
+        seqnum, acknum, syn_set, ack_set, fin_set, window, length, checksum = unpack_segment_header(header)
+
+        if(self.in_cksum(segment)== 0):
+            self._seqnum = seqnum
+            self._acknum = acknum
+
+        else: 
+            #discard this segement
+            is_discard = True 
+
+        # pass # present to be able to remove the NotImplementedError without having to implement anything yet.
+        # raise NotImplementedError("No implementation of lossy_layer_segment_received present. Read the comments & code of client_socket.py.")
 
 
     def lossy_layer_tick(self):
@@ -137,8 +153,10 @@ class BTCPClientSocket(BTCPSocket):
         boolean or enum has the expected value. We do not think you will need
         more advanced thread synchronization in this project.
         """
-        pass # present to be able to remove the NotImplementedError without having to implement anything yet.
-        raise NotImplementedError("No implementation of connect present. Read the comments & code of client_socket.py.")
+        nr_tries = 0
+
+        # pass # present to be able to remove the NotImplementedError without having to implement anything yet.
+        # raise NotImplementedError("No implementation of connect present. Read the comments & code of client_socket.py.")
 
 
     def send(self, data):

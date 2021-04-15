@@ -11,6 +11,7 @@ import sys
 import threading
 from btcp.constants import *
 
+D B B B A B
 
 def handle_incoming_segments(btcp_socket, event, udp_socket):
     """This is the main method of the "network thread".
